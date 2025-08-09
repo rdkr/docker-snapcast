@@ -80,8 +80,8 @@ FROM snapcast-airport AS snapcast-airport-spotify
 RUN mkdir -p /app/build \
   && cd /app/build \
   && apk add --no-cache --upgrade --virtual .build-deps git libconfig-dev cargo build-base cmake rust-bindgen clang18-dev \
-  && git clone -b master https://github.com/librespot-org/librespot.git librespot.git \
-  && cd librespot.git && git checkout dev \
+  && git clone -b fix/broken-metadata https://github.com/photovoltex/librespot.git librespot.git \
+  && cd librespot.git \
   && cargo build --release --no-default-features --features with-avahi \
   && cp ./target/release/librespot /usr/sbin/ \
   && chmod +x /usr/sbin/librespot \
