@@ -1,12 +1,9 @@
 name: Publish Development Docker image on Github
 
 on:
-  # Make workflow callable manually (e.g. via UI)
-  workflow_dispatch:
-  push:
-    branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
+  schedule:
+  # Create weekly build
+  - cron: '0 3 * * 6'
 
 jobs:
   build:
